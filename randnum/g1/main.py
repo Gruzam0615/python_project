@@ -2,11 +2,6 @@ from datetime import datetime, timedelta, timezone
 from collections import OrderedDict
 import random
 
-# 기준일 선언을 위한 값
-# 값이 -5 는 5일 전
-# 값이 5 는 5일 후
-timedeltaValue = -5
-
 # 추첨 시 제외시킬 항목 리스트
 excludeNumbers = []
 sortedExcludeNumbers = list(OrderedDict.fromkeys(excludeNumbers)) # 중복제거 및 순서정렬
@@ -29,6 +24,12 @@ now() - timedelta(days=1)은 현재시간보다 하루이전 값을 출력
 '''
 now = datetime.now()
 # print("now:", now)
+
+# 기준일 선언을 위한 값
+# 값이 -5 는 5일 전
+# 값이 5 는 5일 후
+timedeltaValue = -5
+
 # 기준일 선언
 standardDay = now + timedelta(timedeltaValue)
 print("standardDay: ", standardDay)
@@ -40,9 +41,6 @@ KST = timezone(timedelta(hours=9))
 # print("time2:", time2)
 
 # time3 = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute, standardDay.second, standardDay.microsecond, tzinfo=KST)
-time3 = datetime(standardDay.year, standardDay.month, standardDay.day, 20, 45, tzinfo=KST)
-print("time3:", time3)
-
 
 for x in excludeNumbers:
     numberlist.remove(x)
@@ -56,7 +54,12 @@ count = 0
 for x in sortedIncludeNumbers:
     result.append(x)
 
-while len(result) < 6:
+tempMinute = 0
+while len(result) < 6:    
+    time3 = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute + tempMinute, tzinfo=KST)    
+    print("time3:", time3)
+    tempMinute = tempMinute + 2
+
     seedTime = time3 + timedelta(count)
     print("seedTime:", seedTime)
 
