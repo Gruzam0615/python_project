@@ -28,7 +28,7 @@ now = datetime.now()
 # 기준일 선언을 위한 값
 # 값이 -5 는 5일 전
 # 값이 5 는 5일 후
-timedeltaValue = -5
+timedeltaValue = 0
 
 # 기준일 선언
 standardDay = now + timedelta(timedeltaValue)
@@ -56,11 +56,11 @@ for x in sortedIncludeNumbers:
 
 tempMinute = 0
 while len(result) < 6:    
-    time3 = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute + tempMinute, tzinfo=KST)    
-    print("time3:", time3)
+    time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute + tempMinute, tzinfo=KST)    
+    print("time3:", time)
     tempMinute = tempMinute + 2
 
-    seedTime = time3 + timedelta(count)
+    seedTime = time + timedelta(count)
     print("seedTime:", seedTime)
 
     seedValue = seedTime.strftime("%Y%m%d%H%M%S%f")
