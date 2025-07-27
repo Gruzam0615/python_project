@@ -34,13 +34,13 @@ timedeltaValue = 0
 standardDay = now + timedelta(timedeltaValue)
 print("standardDay: ", standardDay)
 KST = timezone(timedelta(hours=9))
-# time1 = datetime.datetime(now.year, now.month, now.day, now.hour, now.minute, now.second, now.microsecond, tzinfo=KST)
-# print("time1:", time1)
+# time = datetime.datetime(now.year, now.month, now.day, now.hour, now.minute, now.second, now.microsecond, tzinfo=KST)
+# print("time:", time)
 
-# time2 = datetime.datetime(now.year, now.month, now.day, 18, 0, now.second, now.microsecond, tzinfo=KST)
-# print("time2:", time2)
+# time = datetime.datetime(now.year, now.month, now.day, 18, 0, now.second, now.microsecond, tzinfo=KST)
+# print("time:", time)
 
-# time3 = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute, standardDay.second, standardDay.microsecond, tzinfo=KST)
+# time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute, standardDay.second, standardDay.microsecond, tzinfo=KST)
 
 for x in excludeNumbers:
     numberlist.remove(x)
@@ -57,7 +57,7 @@ for x in sortedIncludeNumbers:
 tempMinute = 0
 while len(result) < 6:    
     time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute + tempMinute, tzinfo=KST)    
-    print("time3:", time)
+    print("time:", time)
     tempMinute = tempMinute + 2
 
     seedTime = time + timedelta(count)
