@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, timezone
+from timeforSeed import datetime, timedelta, timezone
 from collections import OrderedDict
 import random
 
@@ -17,30 +17,31 @@ numberlist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
              31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
              41, 42, 43, 44, 45]
 
-'''
-now - nDay == 어제
-현재시간서 nDay timedelta(days=n) 만큼 감소
-now() - timedelta(days=1)은 현재시간보다 하루이전 값을 출력
-'''
-now = datetime.now()
-# print("now:", now)
+def TimeForSeed() :
+    '''
+    now - nDay == 어제
+    현재시간서 nDay timedelta(days=n) 만큼 감소
+    now() - timedelta(days=1)은 현재시간보다 하루이전 값을 출력
+    '''
+    now = datetime.now()
 
-# 기준일 선언을 위한 값
-# 값이 -5 는 5일 전
-# 값이 5 는 5일 후
-timedeltaValue = 0
+    '''
+    기준일 선언을 위한 값
+    값이 -5 는 5일 전
+    값이 5 는 5일 후
+    '''
+    timedeltaValue = -5
 
-# 기준일 선언
-standardDay = now + timedelta(timedeltaValue)
-print("standardDay: ", standardDay)
-KST = timezone(timedelta(hours=9))
-# time = datetime.datetime(now.year, now.month, now.day, now.hour, now.minute, now.second, now.microsecond, tzinfo=KST)
-# print("time:", time)
+    # 기준일 선언
+    standardDay = now + timedelta(timedeltaValue)
+    timeZoneName = timezone(timedelta(hours=9))
 
-# time = datetime.datetime(now.year, now.month, now.day, 18, 0, now.second, now.microsecond, tzinfo=KST)
-# print("time:", time)
+    # time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute, standardDay.second, standardDay.microsecond, tzinfo=timeZoneName)
+    time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute, standardDay.second, standardDay.microsecond)
 
-# time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute, standardDay.second, standardDay.microsecond, tzinfo=KST)
+    return time
+
+time = TimeForSeed()
 
 for x in excludeNumbers:
     numberlist.remove(x)
@@ -56,9 +57,12 @@ for x in sortedIncludeNumbers:
 
 tempMinute = 0
 while len(result) < 6:    
-    time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute + tempMinute, tzinfo=KST)    
-    print("time:", time)
-    tempMinute = tempMinute + 2
+    '''
+    랜덤값을 출력하기전, 랜덤값 생성을 위한 시드값인 datetime 값에 변화를 주기위한 부분
+    '''
+    # time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute + tempMinute)
+    # print("time:", time)
+    # tempMinute = tempMinute + 2
 
     seedTime = time + timedelta(count)
     print("seedTime:", seedTime)
