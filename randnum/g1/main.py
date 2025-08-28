@@ -3,7 +3,9 @@ from collections import OrderedDict
 import random
 
 # 추첨 시 제외시킬 항목 리스트
-excludeNumbers = []
+excludeNumbers = [
+   
+]
 sortedExcludeNumbers = list(OrderedDict.fromkeys(excludeNumbers)) # 중복제거 및 순서정렬
 
 # 추첨 시 포함시킬 항목 리스트
