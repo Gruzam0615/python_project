@@ -4,7 +4,7 @@ import random
 
 # 추첨 시 제외시킬 항목 리스트
 excludeNumbers = [
-   
+   9, 16, 20, 23, 36, 41 # 2025.09.02
 ]
 sortedExcludeNumbers = list(OrderedDict.fromkeys(excludeNumbers)) # 중복제거 및 순서정렬
 
@@ -32,7 +32,7 @@ def TimeForSeed() :
     값이 -5 는 5일 전
     값이 5 는 5일 후
     '''
-    timedeltaValue = -5
+    timedeltaValue = -1
 
     # 기준일 선언
     standardDay = now + timedelta(timedeltaValue)
