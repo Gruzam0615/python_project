@@ -19,32 +19,28 @@ numberlist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
              31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
              41, 42, 43, 44, 45]
 
-def TimeForSeed() :
-    '''
-    now - nDay == 어제
-    현재시간서 nDay timedelta(days=n) 만큼 감소
-    now() - timedelta(days=1)은 현재시간보다 하루이전 값을 출력
-    '''
-    now = datetime.now()
 
-    '''
-    기준일 선언을 위한 값
-    값이 -5 는 5일 전
-    값이 5 는 5일 후
-    '''
-    timedeltaValue = -1
+'''
+now - nDay == 어제
+현재시간서 nDay timedelta(days=n) 만큼 감소
+now() - timedelta(days=1)은 현재시간보다 하루이전 값을 출력
+'''
+now = datetime.now()
 
-    # 기준일 선언
-    standardDay = now + timedelta(timedeltaValue)
-    timeZoneName = timezone(timedelta(hours=9))
+'''
+기준일 선언을 위한 값
+값이 -5 는 5일 전
+값이 5 는 5일 후
+'''
+timedeltaValue = -5
 
-    # time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute, standardDay.second, standardDay.microsecond, tzinfo=timeZoneName)
-    time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute, standardDay.second, standardDay.microsecond)
+# 기준일 선언
+standardDay = now + timedelta(timedeltaValue)
+timeZoneName = timezone(timedelta(hours=9))
 
-    return time
+time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute, standardDay.second, standardDay.microsecond, tzinfo=timeZoneName)
 
-time = TimeForSeed()
-
+# 추첨대상 목록에서 예외대상을 제거하기
 for x in excludeNumbers:
     numberlist.remove(x)
 
@@ -62,7 +58,7 @@ while len(result) < 6:
     '''
     랜덤값을 출력하기전, 랜덤값 생성을 위한 시드값인 datetime 값에 변화를 주기위한 부분
     '''
-    # time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute + tempMinute)
+    time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute + tempMinute)
     # print("time:", time)
     # tempMinute = tempMinute + 2
 
