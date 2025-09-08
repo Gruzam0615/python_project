@@ -4,7 +4,7 @@ import random
 
 # 추첨 시 제외시킬 항목 리스트
 excludeNumbers = [
-   9, 16, 20, 23, 36, 41 # 2025.09.02
+   5, 6, 9, 11, 15, 17, 23, 24, 27, 30, 37, 43
 ]
 sortedExcludeNumbers = list(OrderedDict.fromkeys(excludeNumbers)) # 중복제거 및 순서정렬
 
@@ -32,7 +32,7 @@ now = datetime.now()
 값이 -5 는 5일 전
 값이 5 는 5일 후
 '''
-timedeltaValue = -5
+timedeltaValue = 0
 
 # 기준일 선언
 standardDay = now + timedelta(timedeltaValue)
@@ -54,14 +54,16 @@ for x in sortedIncludeNumbers:
     result.append(x)
 
 tempMinute = 0
+tempSecond = 0
 while len(result) < 6:    
     '''
     랜덤값을 출력하기전, 랜덤값 생성을 위한 시드값인 datetime 값에 변화를 주기위한 부분
     '''
-    time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute + tempMinute)
+    # time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute + tempMinute)
+    time = datetime(standardDay.year, standardDay.month, standardDay.day, 17, standardDay.minute + tempMinute)
     # print("time:", time)
-    # tempMinute = tempMinute + 2
-
+    tempMinute = tempMinute + 1
+    
     seedTime = time + timedelta(count)
     print("seedTime:", seedTime)
 
