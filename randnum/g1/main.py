@@ -32,7 +32,7 @@ now = datetime.now()
 값이 -5 는 5일 전
 값이 5 는 5일 후
 '''
-timedeltaValue = 0
+timedeltaValue = -5
 
 # 기준일 선언
 standardDay = now + timedelta(timedeltaValue)
@@ -59,8 +59,7 @@ while len(result) < 6:
     '''
     랜덤값을 출력하기전, 랜덤값 생성을 위한 시드값인 datetime 값에 변화를 주기위한 부분
     '''
-    # time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute + tempMinute)
-    time = datetime(standardDay.year, standardDay.month, standardDay.day, 17, standardDay.minute + tempMinute)
+    time = datetime(standardDay.year, standardDay.month, standardDay.day, standardDay.hour, standardDay.minute + tempMinute)
     # print("time:", time)
     tempMinute = tempMinute + 1
     
